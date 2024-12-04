@@ -1,22 +1,30 @@
 import React from 'react';
 import './Header.css';
+import { Avatar } from '@mui/material';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import SearchIcon from '@mui/icons-material/Search';
+import HelpOutlinecon from '@mui/icons-material/HelpOutline';
+
+
 
 function Header() {
   return (
     <div className="header"> 
     <div className='header_left'>
-        {/* Avtars for logged in user   */}
-        {/* Time icon */}
+         <Avatar
+         className='header_avatar'
+         alt='ruchita'
+         src=''
+         />
+         <AccessTimeIcon />
    </div>
 
    <div className='header_search' >
-    {/* Search icon */}
-    {/* input*/}
+    <SearchIcon />
    </div>
 
    <div className='header_right'>
-    {/* help icon */}
-
+    <HelpOutlinecon />
    </div>
 
 
