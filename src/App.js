@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './Header';
+import Sidebar from './Sidebar';
 
 function App() {
   return (
@@ -10,11 +11,13 @@ function App() {
         Hello Programmers...lets buid the TeamConnect 
       </h1>
       
-      {/*Header */}
       <Header/>
+
+      <div className="app_body">
+        <Sidebar />
+      </div>
  
       
-       {/*Sidebar */}
         {/*react-Router -> */}
 
 

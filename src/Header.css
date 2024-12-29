@@ -32,6 +32,7 @@
     border:none;
     text-align: center;
     min-width:35vw;
+    
 }
 .header_right{
     flex:0.3;
