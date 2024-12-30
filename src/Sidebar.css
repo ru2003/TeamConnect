@@ -23,7 +23,15 @@
 .sidebar_info > h3{
     display: flex;
     align-items:center;
+    font-size: 13px;
+    font-weight:400
 
+}
+.sidebar_info > h3 > .MuiSvgIcon-root{
+    font-size:14px;
+    margin-top: 1px;
+    margin-right:2px;
+    color:green;
 }
 
 
