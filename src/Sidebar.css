@@ -4,6 +4,12 @@
     border-top:1px solid #49274b;
     max-width: 260px;
 }
+
+.sidebar > hr{
+    margin-top:10px;
+    margin-bottom:10px;
+    border:1px solid #49274b;
+}
 .sidebar_header{
    display:flex;
    border-bottom: 1px solid #49274b;
