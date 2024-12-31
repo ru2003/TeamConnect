@@ -20,7 +20,7 @@ function Sidebar() {
              </div>
              
              <SidebarOption Icon={InsertCommentIcon} title="Threads"/>
-             
+             <SidebarOption title="youtube"/>
 
 
         </div>
