@@ -2,23 +2,30 @@ import React from 'react';
 import './App.css';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 
 function App() {
   return (
-    //BEM naming convention for the defaultS
-    <div className="App">
-      <h1>
-        Hello Programmers...lets buid the TeamConnect 
-      </h1>
-      
-      <Header/>
 
-      <div className="app_body">
+    <div className="App">
+      <Router>
+     
+      <Header/>
+       <div className="app_body">
         <Sidebar />
-      </div>
- 
-      
-        {/*react-Router -> */}
+        <Switch>
+          <Route path ="/room/:roomId">
+          <Chat />
+          </Route>
+          
+          <Route path="/">
+          <h1>Welcome</h1>
+          </Route>
+          </Switch>
+           </div>
+           {/*react-Router -> */}
+          </Router>
+        
 
 
 
