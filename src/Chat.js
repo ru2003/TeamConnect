@@ -3,27 +3,39 @@ import "./Chat.css";
 import { useParams } from "react-router-dom";
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import { getFirestore, doc, onSnapshot } from "firebase/firestore";
+import { getFirestore, doc, collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "./firebase"; // Assuming your firebase.js file exports the initialized db
 
 function Chat() {
     const { roomId } = useParams();
     const [roomDetails, setRoomDetails] = useState(null);
+    const [roomMessages, setRoomMessages] = useState([]);
 
     useEffect(() => {
         if (roomId) {
-            // Using modular Firestore methods for Firebase v9+
+            // Fetch room details
             const roomRef = doc(getFirestore(), 'rooms', roomId);
-            const unsubscribe = onSnapshot(roomRef, (snapshot) => {
+            const unsubscribeRoom = onSnapshot(roomRef, (snapshot) => {
                 setRoomDetails(snapshot.data());
             });
 
-            // Clean up the subscription on unmount
-            return () => unsubscribe();
+            // Fetch messages in the room
+            const messagesRef = collection(getFirestore(), 'rooms', roomId, 'messages');
+            const messagesQuery = query(messagesRef, orderBy('timestamp', 'asc'));
+            const unsubscribeMessages = onSnapshot(messagesQuery, (snapshot) => {
+                setRoomMessages(snapshot.docs.map(doc => doc.data()));
+            });
+
+            // Cleanup subscriptions
+            return () => {
+                unsubscribeRoom();
+                unsubscribeMessages();
+            };
         }
     }, [roomId]);
 
     console.log(roomDetails);
+    console.log(roomMessages);
 
     return (
         <div className='chat'>
@@ -41,6 +53,14 @@ function Chat() {
                         <InfoOutlinedIcon />Details
                     </p>
                 </div>
+            </div>
+
+            <div className="chat_messages">
+              {/* {roomMessages.map((message, index) => (
+                    <div key={index} className="chat_message">
+                        <p>{message.text}</p>
+                    </div>
+                ))}   */}
             </div>
         </div>
     );
