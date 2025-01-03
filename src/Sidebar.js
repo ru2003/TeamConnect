@@ -14,6 +14,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { getFirestore, collection, onSnapshot } from "firebase/firestore"; // Correct imports
 import { getAuth } from "firebase/auth"; // Auth import
+import AddIcon from "@mui/icons-material/Add";
 
 // Firebase
 import db from "./firebase"; // Import the initialized Firestore instance
@@ -59,11 +60,11 @@ function Sidebar() {
       <SidebarOption Icon={PeopleAltIcon} title="People & user groups" />
       <SidebarOption Icon={AppsIcon} title="Apps" />
       <SidebarOption Icon={FileCopyIcon} title="File browser" />
-
-      <SidebarOption Icon={ExpandLessIcon} title="Show less" />
+       <SidebarOption Icon={ExpandLessIcon} title="Show less" />
       <hr />
       <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
       <hr />
+      <SidebarOption Icon={AddIcon} title="Add Channel" addChannelOption/>
 
       {/* Render the channels dynamically */}
       {channels.map(channel => (
